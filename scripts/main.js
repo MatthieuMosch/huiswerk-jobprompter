@@ -26,4 +26,18 @@ const found =
     departments.sales.jobs.find((element) => element.title === "Verkoopmanager");
 console.log(found.description);
 
-//opdracht 2
+//opdracht 2a
+const userInput = prompt("Over welke afdeling wil je informatie? Kies uit: [marketing / sales / customer-service]");
+console.log(userInput);
+
+//opdracht 2b
+console.log("Je koos " + userInput + ".");
+if (departments.hasOwnProperty(userInput)) {
+    console.log(departments[userInput.toLowerCase()].description);
+} else {
+    //opdracht 2c
+    console.log("Deze afdeling is onbekend.");
+    console.error("Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.");
+}
+
+//opdracht 3
