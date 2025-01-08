@@ -12,8 +12,18 @@ console.log("De afdeling Customer Service heeft " + countCustomerService + " med
 
 //opdracht 1d
 console.log("Sales is een uitdagende afdeling om te werken als Verkoopmanager.");
+/*
+//loop to find the requested job
 for (let i = 0; i < departments.sales.jobs.length; i++) {
     if (departments.sales.jobs[i].title === "Verkoopmanager") {
         console.log(departments.sales.jobs[i].description);
     }
 }
+*/
+
+//using find() to find the requested job
+const found =
+    departments.sales.jobs.find((element) => element.title === "Verkoopmanager");
+console.log(found.description);
+
+//opdracht 2
