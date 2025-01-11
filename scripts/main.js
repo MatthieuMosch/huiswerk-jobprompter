@@ -17,6 +17,7 @@ console.log("Sales is een uitdagende afdeling om te werken als Verkoopmanager.")
 for (let i = 0; i < departments.sales.jobs.length; i++) {
     if (departments.sales.jobs[i].title === "Verkoopmanager") {
         console.log(departments.sales.jobs[i].description);
+        break;
     }
 }
 */
@@ -27,17 +28,28 @@ const found =
 console.log(found.description);
 
 //opdracht 2a
-const userInput = prompt("Over welke afdeling wil je informatie? Kies uit: [marketing / sales / customer-service]");
-console.log(userInput);
+const chosenDepartment =
+    prompt("Over welke afdeling wil je informatie?\nKies uit: [marketing / sales / customer-service]").toLowerCase();
+console.log(chosenDepartment);
 
 //opdracht 2b
-console.log("Je koos " + userInput + ".");
-if (departments.hasOwnProperty(userInput)) {
-    console.log(departments[userInput.toLowerCase()].description);
+console.log("Je koos " + chosenDepartment + ".");
+if (departments.hasOwnProperty(chosenDepartment)) {
+    console.log(departments[chosenDepartment].description);
 } else {
     //opdracht 2c
     console.log("Deze afdeling is onbekend.");
     console.error("Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.");
 }
 
-//opdracht 3
+//opdracht 3a
+let promptMsg = "Je koos " + chosenDepartment + ".\nOver welke functie wil je meer weten?\n" +
+    "Voer een getal tussen 0 en " + (departments[chosenDepartment].jobs.length-1).toString() + "\n";
+for (i = 0; i < departments[chosenDepartment].jobs.length; i++) {
+    promptMsg += i.toString() + ": [" + departments[chosenDepartment].jobs[i].title + "]\n";
+}
+const chosenJob = prompt(promptMsg);
+
+//opdracht 3b
+console.log("Je koos " + departments[chosenDepartment].jobs[chosenJob].title + "\n" +
+    "Een uitdagende functie.");
