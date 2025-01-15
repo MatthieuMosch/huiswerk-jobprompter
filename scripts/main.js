@@ -56,7 +56,29 @@ if (chosenDepartment !== undefined) {
     if (chosenJob < departments[chosenDepartment].jobs.length) {
         console.log("Je koos " + departments[chosenDepartment].jobs[chosenJob].title + "\n" +
             "Een uitdagende rol!\n" + departments[chosenDepartment].jobs[chosenJob].description);
+
+        // opdracht 4a
+        console.log(departments[chosenDepartment].title + " is een leuke afdeling om te werken.\n +" +
+            "Er werken op dit moment " + departments[chosenDepartment].numberOfEmployees + " werknemers.");
+
+        // opdracht 4b
+        // al gedaan bij opdracht 3
+
+        // opdracht 4c
+        // al gedaan bij opdracht 3
+
+        // opdracht 5a
+        document.getElementById('role-title').textContent = departments[chosenDepartment].jobs[chosenJob].title;
+
+        // opdracht 5b
+        document.getElementById('department-description').textContent = departments[chosenDepartment].description;
+        document.getElementById('role-description').textContent = departments[chosenDepartment].jobs[chosenJob].description;
+
     } else {
-        console.error("Onbekende functie.");
+        document.getElementById('error-message').textContent = "Onbekende functie.";
     }
+} else {
+    document.getElementById('error-message').textContent = "Onbekende afdeling.";
 }
+
+// opdracht 5c i see no advantage in using literals in the above code but i know how to use them like a variable in a string using ${variable}
