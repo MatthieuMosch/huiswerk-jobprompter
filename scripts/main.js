@@ -28,7 +28,7 @@ const found =
 console.log(found.description);
 
 //opdracht 2a
-const chosenDepartment =
+let chosenDepartment =
     prompt("Over welke afdeling wil je informatie?\nKies uit: [marketing / sales / customer-service]").toLowerCase();
 console.log(chosenDepartment);
 
@@ -40,16 +40,23 @@ if (departments.hasOwnProperty(chosenDepartment)) {
     //opdracht 2c
     console.log("Deze afdeling is onbekend.");
     console.error("Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.");
+    chosenDepartment = undefined;
 }
 
 //opdracht 3a
-let promptMsg = "Je koos " + chosenDepartment + ".\nOver welke functie wil je meer weten?\n" +
-    "Voer een getal tussen 0 en " + (departments[chosenDepartment].jobs.length-1).toString() + "\n";
-for (i = 0; i < departments[chosenDepartment].jobs.length; i++) {
-    promptMsg += i.toString() + ": [" + departments[chosenDepartment].jobs[i].title + "]\n";
-}
-const chosenJob = prompt(promptMsg);
+if (chosenDepartment !== undefined) {
+    let promptMsg = "Je koos " + chosenDepartment + ".\nOver welke functie wil je meer weten?\n" +
+        "Voer een getal tussen 0 en " + (departments[chosenDepartment].jobs.length-1).toString() + "\n";
+    for (i = 0; i < departments[chosenDepartment].jobs.length; i++) {
+        promptMsg += i.toString() + ": [" + departments[chosenDepartment].jobs[i].title + "]\n";
+    }
+    const chosenJob = prompt(promptMsg);
 
-//opdracht 3b
-console.log("Je koos " + departments[chosenDepartment].jobs[chosenJob].title + "\n" +
-    "Een uitdagende functie.");
+    //opdracht 3b
+    if (chosenJob < departments[chosenDepartment].jobs.length) {
+        console.log("Je koos " + departments[chosenDepartment].jobs[chosenJob].title + "\n" +
+            "Een uitdagende rol!\n" + departments[chosenDepartment].jobs[chosenJob].description);
+    } else {
+        console.error("Onbekende functie.");
+    }
+}
